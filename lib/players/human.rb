@@ -1,3 +1,6 @@
+require_relative "player"
+
+# A real player that can play the game
 class Human < Player
   protected
 

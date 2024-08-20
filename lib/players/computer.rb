@@ -1,3 +1,6 @@
+require_relative "player"
+
+# A computer that can play the game
 class Computer < Player
   @guesses = []
   def initialize

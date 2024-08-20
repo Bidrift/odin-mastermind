@@ -1,4 +1,6 @@
 require "colorize"
+require_relative "human"
+require_relative "computer"
 
 # Our game class
 class Game
