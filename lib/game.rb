@@ -1,15 +1,16 @@
 require "colorize"
-require_relative "human"
-require_relative "computer"
+require_relative "players/player"
+require_relative "players/computer"
+require_relative "prompter"
 
 # Our game class
 class Game
-  @modes = {
-    "0": "Play as guesser",
-    "1": "Play as coder"
-  }
   def initialize
     puts "Starting game...".colorize(:green)
+    @modes = {
+      "0": "Play as guesser",
+      "1": "Play as coder"
+    }
     fetch_mode
     create_players
     run_game
