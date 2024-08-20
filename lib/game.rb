@@ -29,6 +29,7 @@ class Game
 
   def run_game
     @code = @coder.code
+    @feedback = nil
     (1..12).each do |round|
       puts "Round #{round}".colorize(:green)
       current_guess = @guesser.guess(@feedback)

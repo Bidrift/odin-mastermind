@@ -1,7 +1,7 @@
 # A player that can be a guesser
 module Guessable
   def guess(feedback)
-    get_guess(feedback)
+    @guess = get_guess(feedback)
   end
 end
 
