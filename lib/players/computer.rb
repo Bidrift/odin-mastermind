@@ -24,7 +24,7 @@ class Computer < Player
     [full_correct(guessed, code).size, half_correct(guessed, code).size]
   end
 
-  def get_guess(feedback)
+  def fetch_guess(feedback)
     clean_guesses(feedback) if feedback
     @guesses[0]
   end

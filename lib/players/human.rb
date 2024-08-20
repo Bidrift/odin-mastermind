@@ -4,7 +4,7 @@ require_relative "player"
 class Human < Player
   protected
 
-  def get_guess(feedback)
+  def fetch_guess
     puts "Choose a four-digit code consisting of 1-6s (Ex: 1652)".colorize(:red)
     Prompter.gets_match(/^[1-6]{4}$/)
   end
