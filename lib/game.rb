@@ -1,6 +1,7 @@
 require "colorize"
-require_relative "players/player"
+require_relative "players/human"
 require_relative "players/computer"
+require_relative "players/player"
 require_relative "prompter"
 
 # Our game class
@@ -20,14 +21,13 @@ class Game
 
   def fetch_mode
     Prompter.put_options(@modes)
-    Prompter.gets_match(/^[0-1]$/)
+    @mode = Prompter.gets_match(/^[0-1]$/)
   end
 
   def create_players
     puts "Creating players".colorize(:green)
-    @players = Array.new(2)
     @coder = @mode == "0" ? Computer.new : Human.new
-    @guesser = @mode == "1" ? Human.new : Computer.new
+    @guesser = @mode == "0" ? Human.new : Computer.new
   end
 
   def run_game

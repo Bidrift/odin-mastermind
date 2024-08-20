@@ -2,15 +2,13 @@ require_relative "player"
 
 # A computer that can play the game
 class Computer < Player
-  @guesses = []
   def initialize
     super
+    @guesses = []
     (1..6).each do |v1|
       (1..6).each do |v2|
         (1..6).each do |v3|
-          (1..6).each do |v4|
-            @guesses.push(v1.to_s.concat(v2.to_s, v3.to_s, v4.to_s))
-          end
+          (1..6).each { |v4| @guesses.push(v1.to_s.concat(v2.to_s, v3.to_s, v4.to_s)) }
         end
       end
     end
@@ -23,12 +21,12 @@ class Computer < Player
   end
 
   def check_code(guessed, code = @code)
-    [full_correct(guessed, code).size, half_correct(code, code).size]
+    [full_correct(guessed, code).size, half_correct(guessed, code).size]
   end
 
   def get_guess(feedback)
     clean_guesses(feedback) if feedback
-    @guesses.sample
+    @guesses[0]
   end
 
   private
@@ -42,7 +40,7 @@ class Computer < Player
     true_colors = not_in_code(guessed, code)
     other_colors.select do |v|
       true_colors.find do |tuple|
-        next (tuple[2] = false || true) if (tuple[0] == v[0]) && tuple[2]
+        next (tuple[2] = false) || true if (tuple[0] == v[0]) && tuple[2]
       end
     end
   end
@@ -59,6 +57,6 @@ class Computer < Player
   end
 
   def clean_guesses(feedback)
-    guesses.select! { |v| check_code(@guess, v) == feedback }
+    @guesses.select! { |v| check_code(@guess, v) == feedback }
   end
 end
